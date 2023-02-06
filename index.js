@@ -3,7 +3,7 @@ const app = express();
 
 app.listen(3000, console.log("Server running from port 3000"));
 
-const { getJewelry } = require("./consultas");
+const { getJewelry, getJewelryByFilters } = require("./consultas");
 
 app.get("/joyas", async (req, res) => {
   try {
@@ -14,4 +14,10 @@ app.get("/joyas", async (req, res) => {
     console.error(err);
     res.send(err.message);
   }
+});
+
+app.get("/joyas/filters", async (req, res) => {
+  const queryStrings = req.query;
+  const joyas = await getJewelryByFilters(queryStrings);
+  res.json(joyas);
 });

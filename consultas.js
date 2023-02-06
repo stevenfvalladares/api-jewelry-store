@@ -40,4 +40,34 @@ const getJewelry = async ({
   return joyas;
 };
 
-module.exports = { getJewelry };
+const getJewelryByFilters = async ({
+  categoria,
+  metal,
+  precio_max,
+  precio_min
+}) => {
+  let filters = [];
+  const values = [];
+
+  const addFilter = (field, comparator, value) => {
+    values.push(value);
+    const { length } = filters;
+    filters.push(`${field} ${comparator} $${length + 1}`);
+  };
+
+  if (categoria) addFilter("categoria", "=", categoria);
+  if (metal) addFilter("metal", "=", metal);
+  if (precio_max) addFilter("precio", "<=", precio_max);
+  if (precio_min) addFilter("precio", ">=", precio_min);
+
+  let sqlQuery = "SELECT * FROM inventario";
+  if (filters.length > 0) {
+    filters = filters.join(" AND ");
+    sqlQuery += ` WHERE ${filters}`;
+  }
+
+  const { rows: joyas } = await pool.query(sqlQuery, values)
+  return joyas
+};
+
+module.exports = { getJewelry, getJewelryByFilters };
