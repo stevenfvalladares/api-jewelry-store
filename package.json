@@ -1,0 +1,24 @@
+{
+  "name": "api-jewelry-store",
+  "version": "1.0.0",
+  "description": "Desafío tienda de Joyas del módulo Backend con NodeJS y Express del bootcamp desarrollo Full Stack JavaScript (DesafíoLatam).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenfvalladares/api-jewelry-store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenfvalladares/api-jewelry-store/issues"
+  },
+  "homepage": "https://github.com/stevenfvalladares/api-jewelry-store#readme",
+  "dependencies": {
+    "pg": "^8.9.0",
+    "pg-format": "^1.0.4"
+  }
+}
