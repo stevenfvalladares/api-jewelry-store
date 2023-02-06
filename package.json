@@ -4,6 +4,7 @@
   "description": "Desafío tienda de Joyas del módulo Backend con NodeJS y Express del bootcamp desarrollo Full Stack JavaScript (DesafíoLatam).",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
