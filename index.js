@@ -7,6 +7,14 @@ app.listen(3000, console.log("Server running from port 3000"));
 const { getJewelry, getJewelryByFilters } = require("./consultas");
 
 // midleware
+app.use((req, res, next) => {
+  const date = moment().format("MMMM Do YYYY, h:mm:ss a");
+  const url = req.url;
+  console.log(
+    `\nLast consultation made with date: ${date}. \nConsulted route:${url}`
+  );
+  return next();
+});
 
 const prepareHATEOAS = (items) => {
   const results = items
@@ -50,5 +58,7 @@ app.get("/joyas/filters", async (req, res) => {
 
 // default route
 app.get("*", (req, res) => {
-  res.status(404).send(`The requested URL/${req.originalUrl} was not found on this server.`);
+  res
+    .status(404)
+    .send(`The requested URL${req.originalUrl} was not found on this server.`);
 });
